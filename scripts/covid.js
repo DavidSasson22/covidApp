@@ -34,16 +34,7 @@ async function getCountryCoronaData(code) {
 
 //Thiis function recives all the covid data from all countries and orgenize it.
 async function continetAnalize(countries) {
-  class Continent {
-    constructor(cases, deaths, recovered, critical) {
-      this.cases = cases;
-      this.deaths = deaths;
-      this.recovered = recovered;
-      this.critical = critical;
-    }
-  }
 
-  console.log(countries);
   let continentData = [];
   for (const [key, value] of Object.entries(countries)) {
     let continent = {};
@@ -84,8 +75,8 @@ async function continetAnalize(countries) {
     continentData.push(continent);
   }
   console.log(continentData);
-
   console.log(`finished!`);
+  return continentData;
 }
 
 
@@ -124,8 +115,6 @@ async function CountryByConti(proxy) {
 
   countries = await allCountriesData(proxy);
 
-  continetAnalize(countries[1]);
-
   let countryLi = document.querySelector(`#countryLi`);
   let america = document.querySelector(`#america`);
   let asia = document.querySelector(`#asia`);
@@ -133,7 +122,6 @@ async function CountryByConti(proxy) {
   let africa = document.querySelector(`#africa`);
   let oceania = document.querySelector(`#oceania`);
   let world = document.querySelector(`#world`);
-
 
   const basics = () => {
     countryLi.innerHTML = ``;
@@ -207,11 +195,42 @@ async function CountryByConti(proxy) {
       countryLi.appendChild(option);
     });
   });
+
+  let data = await continetAnalize(countries[1]);
+  function charMaker(data) {
+    let casesB = document.querySelector(`#cases`);
+    let deathB = document.querySelector(`#death`);
+    let recoveredB = document.querySelector(`#recovered`);
+    let criticalB = document.querySelector(`#critical`);
+
+    let buttons = [casesB, deathB, recoveredB, criticalB];
+  
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+      // The type of chart we want to create
+      type: 'line',
+
+      // The data for our dataset
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [{
+          label: 'My First dataset',
+          backgroundColor: 'rgb(255, 99, 132)',
+          borderColor: 'rgb(255, 99, 132)',
+          data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+      },
+
+      // Configuration options go here
+      options: {}
+    });
+    console.log(`activated`);
+  };
+
+  charMaker(data);
+
 }
-
-
-
-
 
 
 

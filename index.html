@@ -12,8 +12,25 @@
 
 <body>
   <header></header>
-  <div class="graph"></div>
-  <div class="dataType"></div>
+  <div class="graph">
+    <canvas id="myChart"  width="400" height="100"></canvas>
+  </div>
+  <div class="dataType">
+    <ul class="by type">
+      <li class="types">
+        <button id="cases">Cases</button>
+      </li>
+      <li class="types">
+        <button id="death">Death</button>
+      </li>
+      <li class="types">
+        <button id="recovered">Recovered</button>
+      </li>
+      <li class="types">
+        <button id="critical">Critical</button>
+      </li>
+    </ul>
+  </div>
   <div class="byCountry">
     <ul class="continents">
       <li class="continent">
@@ -41,7 +58,6 @@
   <div class="container">
     <div class="search" class=".left">
       <label for="countryLi">Search by Country:</label>
-      <!-- <br> -->
       <select name="countryLi" id="countryLi">
       </select>
     </div>
@@ -59,7 +75,8 @@
       </table>
     </div>
   </div>
-
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="./scripts/covid.js"></script>
 </body>
 
