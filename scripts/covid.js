@@ -9,11 +9,18 @@
 /* =====================SCRIPT======================== */
 
 async function getCountryCoronaData(code) {
+  let tr = document.querySelector(`.tr`);
   const src = `https://corona-api.com/countries/${code}`;
   const getdata = await fetch(src);
   let allData = await getdata.json();
   allData = allData.data;
-  // console.log(allData);
+  console.log(allData);
+  tr.innerHTML = `<th>total cases:<br>${allData.latest_data.confirmed}</th>
+  <th>new cases:<br>${allData.today.confirmed}</th>
+  <th>total deaths:<br>${allData.latest_data.deaths}</th>
+  <th>new deaths:<br>${allData.today.deaths}</th>
+  <th>total recovered:<br>${allData.latest_data.recovered}</th>
+  <th>in critical condition:<br>${allData.latest_data.critical}</th>`
 }
 
 
@@ -60,11 +67,23 @@ async function CountryByConti(proxy) {
   let world = document.querySelector(`#world`);
 
 
+  const basics = () => {
+    countryLi.innerHTML = ``;
+    countries[0].forEach(element => {
+      let option = document.createElement("option");
+      option.value = element[1];
+      option.text = element[0];
+      countryLi.appendChild(option);
+    });
+  };
+
+  basics();
+
   america.addEventListener("click", () => {
     countryLi.innerHTML = ``;
     countries[1].Americas.forEach(element => {
       let option = document.createElement("option");
-      option.value = element[0];
+      option.value = element[1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
@@ -75,7 +94,7 @@ async function CountryByConti(proxy) {
     countryLi.innerHTML = ``;
     countries[1].Asia.forEach(element => {
       let option = document.createElement("option");
-      option.value = element[0];
+      option.value = element[1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
@@ -85,7 +104,7 @@ async function CountryByConti(proxy) {
     countryLi.innerHTML = ``;
     countries[1].Europe.forEach(element => {
       let option = document.createElement("option");
-      option.value = element[0];
+      option.value = element[1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
@@ -95,7 +114,7 @@ async function CountryByConti(proxy) {
     countryLi.innerHTML = ``;
     countries[1].Africa.forEach(element => {
       let option = document.createElement("option");
-      option.value = element[0];
+      option.value = element[1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
@@ -105,7 +124,7 @@ async function CountryByConti(proxy) {
     countryLi.innerHTML = ``;
     countries[1].Oceania.forEach(element => {
       let option = document.createElement("option");
-      option.value = element[0];
+      option.value = element[1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
@@ -115,20 +134,33 @@ async function CountryByConti(proxy) {
     countryLi.innerHTML = ``;
     countries[0].forEach(element => {
       let option = document.createElement("option");
-      option.value = element[0];
+      option.value = element[1][1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
   });
 }
 
-
+async function getCodeSendcode() {
+  let code = document.querySelector(`#countryLi`);
+  code = code.value[1];
+  console.log(code);
+  getCountryCoronaData(code);
+}
 
 async function main() {
   const proxy = `https://api.allorigins.win/raw?url=`;
   const proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
+
   await CountryByConti(proxy);
-  await getCountryCoronaData("AF");
+
+  let code = document.querySelector(`#countryLi`);
+  console.log(code.value);
+  code.addEventListener(`change`, () => {
+    console.log(`changed`);
+    getCountryCoronaData(code.value);
+  })
+
 }
 
 
