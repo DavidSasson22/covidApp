@@ -32,32 +32,60 @@ async function getCountryCoronaData(code) {
 
 
 
-
+//Thiis function recives all the covid data from all countries and orgenize it.
 async function continetAnalize(countries) {
-
-  function ContinentMaker (cases, deaths, recovered, critical) {
-    this.cases = cases;
-    this.deaths = deaths;
-    this.recovered = recovered;
-    this.critical = critical;
+  class Continent {
+    constructor(cases, deaths, recovered, critical) {
+      this.cases = cases;
+      this.deaths = deaths;
+      this.recovered = recovered;
+      this.critical = critical;
+    }
   }
 
   console.log(countries);
-  console.log(`continetAnalize called`);
-  let continentData = {};
+  let continentData = [];
   for (const [key, value] of Object.entries(countries)) {
-    console.log(`${key}: ${value}`);
+    let continent = {};
+    continent.name = key;
+    continent.cases = 0;
+    continent.death = 0;
+    continent.recovered = 0;
+    continent.critical = 0;
+    continent.countries = [];
+
     for (ele of value) {
-      console.log(ele[1]);
-      if(key in continentData) {
-        console.log(`true`);
-      }
-      else {
-        console.log(`false`);
-        continentData[key] = {};
+      if (ele[1] != "XK") {
+        let src = `https://corona-api.com/countries/${ele[1]}`;
+        const getdata = await fetch(src);
+        let allData = await getdata.json();
+
+        let cases = allData.data.latest_data.confirmed;
+        let death = allData.data.latest_data.deaths;
+        let recovered = allData.data.latest_data.recovered;
+        let critical = allData.data.latest_data.critical;
+
+        let country = {};
+        country.name = `${ele[0]}`;
+        country.cases = cases;
+        country.death = death;
+        country.recovered = recovered;
+        country.critical = critical;
+
+        continent.countries.push(country);
+
+        continent.cases += cases;
+        continent.death += death;
+        continent.recovered += recovered;
+        continent.critical += critical;
+
       }
     }
+    continentData.push(continent);
   }
+  console.log(continentData);
+
+  console.log(`finished!`);
 }
 
 
@@ -179,9 +207,6 @@ async function CountryByConti(proxy) {
       countryLi.appendChild(option);
     });
   });
-
-
-
 }
 
 
