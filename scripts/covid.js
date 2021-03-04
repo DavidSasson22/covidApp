@@ -8,13 +8,17 @@
 
 /* =====================SCRIPT======================== */
 
+
+
+// ================ FOR THE COUNTRY TABLE ==================
+
 async function getCountryCoronaData(code) {
   let tr = document.querySelector(`.tr`);
   const src = `https://corona-api.com/countries/${code}`;
   const getdata = await fetch(src);
   let allData = await getdata.json();
   allData = allData.data;
-  console.log(allData);
+  // console.log(allData);
   tr.innerHTML = `<th>total cases:<br>${allData.latest_data.confirmed}</th>
   <th>new cases:<br>${allData.today.confirmed}</th>
   <th>total deaths:<br>${allData.latest_data.deaths}</th>
@@ -22,6 +26,40 @@ async function getCountryCoronaData(code) {
   <th>total recovered:<br>${allData.latest_data.recovered}</th>
   <th>in critical condition:<br>${allData.latest_data.critical}</th>`
 }
+
+
+//  ==================== FOR THE CONTINENT GRAPH ==================
+
+
+
+
+async function continetAnalize(countries) {
+
+  function ContinentMaker (cases, deaths, recovered, critical) {
+    this.cases = cases;
+    this.deaths = deaths;
+    this.recovered = recovered;
+    this.critical = critical;
+  }
+
+  console.log(countries);
+  console.log(`continetAnalize called`);
+  let continentData = {};
+  for (const [key, value] of Object.entries(countries)) {
+    console.log(`${key}: ${value}`);
+    for (ele of value) {
+      console.log(ele[1]);
+      if(key in continentData) {
+        console.log(`true`);
+      }
+      else {
+        console.log(`false`);
+        continentData[key] = {};
+      }
+    }
+  }
+}
+
 
 
 /* This function get the information we need from 'restcountries.herokuapp.com', i.e: it returns a list of all countries name, and an ocject of all continent and their countries */
@@ -57,6 +95,8 @@ async function allCountriesData(proxy) {
 async function CountryByConti(proxy) {
 
   countries = await allCountriesData(proxy);
+
+  continetAnalize(countries[1]);
 
   let countryLi = document.querySelector(`#countryLi`);
   let america = document.querySelector(`#america`);
@@ -134,20 +174,23 @@ async function CountryByConti(proxy) {
     countryLi.innerHTML = ``;
     countries[0].forEach(element => {
       let option = document.createElement("option");
-      option.value = element[1][1];
+      option.value = element[1];
       option.text = element[0];
       countryLi.appendChild(option);
     });
   });
+
+
+
 }
 
-async function getCodeSendcode() {
-  let code = document.querySelector(`#countryLi`);
-  code = code.value[1];
-  console.log(code);
-  getCountryCoronaData(code);
-}
 
+
+
+
+
+
+// ============================ MAIN FUNCTION =======================
 async function main() {
   const proxy = `https://api.allorigins.win/raw?url=`;
   const proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
@@ -155,9 +198,7 @@ async function main() {
   await CountryByConti(proxy);
 
   let code = document.querySelector(`#countryLi`);
-  console.log(code.value);
   code.addEventListener(`change`, () => {
-    console.log(`changed`);
     getCountryCoronaData(code.value);
   })
 
