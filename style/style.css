@@ -6,3 +6,36 @@ li {
   list-style: none;
   margin-left: 4px;
 }
+
+.search {
+  display: inline-block;
+  width: 30vw;
+}
+
+.byCountry {
+  display: inline-block;
+}
+
+.data {
+  float: right;
+  width: 66vw;
+}
+
+.tableData {
+  border: 1px solid black;
+  display: flex;
+}
+
+th {
+  padding: 16px;
+}
+
+.container {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+}
+
+#countryLi {
+  width: 200px;
+}

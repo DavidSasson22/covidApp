@@ -1,9 +1,23 @@
-let proxy = `https://api.allorigins.win/raw?url=`;
-let proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
-// const countrySrc = `https://corona-api.com/countries`;
-// const countrySrc = `https://restcountries.herokuapp.com/api/v1`;
+/* =====================SCRIPT DIAGRAM================= 
+
+ CountryByConti => allCountriesData => 
+ */
 
 
+
+
+/* =====================SCRIPT======================== */
+
+async function getCountryCoronaData(code) {
+  const src = `https://corona-api.com/countries/${code}`;
+  const getdata = await fetch(src);
+  let allData = await getdata.json();
+  allData = allData.data;
+  // console.log(allData);
+}
+
+
+/* This function get the information we need from 'restcountries.herokuapp.com', i.e: it returns a list of all countries name, and an ocject of all continent and their countries */
 async function allCountriesData(proxy) {
 
   let countryByname = [];
@@ -12,24 +26,28 @@ async function allCountriesData(proxy) {
   const countrySrc = `${proxy}https://restcountries.herokuapp.com/api/v1`;
   const getdata = await fetch(countrySrc);
   let allCountries = await getdata.json();
+  // console.log(allCountries);
 
   for (country of allCountries) {
-    countryByname.push([country.name.common, country.region]);
+    countryByname.push([country.name.common, country.cca2, country.region]);
   }
 
   for (country of countryByname) {
-    if (country[1] in continent) {
-      continent[country[1]].push(country[0]);
+    if (country[2] in continent) {
+      continent[country[2]].push([country[0], country[1]]);
     }
     else {
-      continent[country[1]] = [country[0]];
+      continent[country[2]] = [[country[0], country[1]]];
     }
   }
+  // console.log(countryByname);
+  // console.log(continent);
   return [countryByname, continent];
 }
 
 
-async function CountByConti() {
+/* This fuction gets data from allCountriesData, and create html elemnts and add event listeners according to it*/
+async function CountryByConti(proxy) {
 
   countries = await allCountriesData(proxy);
 
@@ -46,8 +64,8 @@ async function CountByConti() {
     countryLi.innerHTML = ``;
     countries[1].Americas.forEach(element => {
       let option = document.createElement("option");
-      option.value = element;
-      option.text = element;
+      option.value = element[0];
+      option.text = element[0];
       countryLi.appendChild(option);
     });
 
@@ -57,8 +75,8 @@ async function CountByConti() {
     countryLi.innerHTML = ``;
     countries[1].Asia.forEach(element => {
       let option = document.createElement("option");
-      option.value = element;
-      option.text = element;
+      option.value = element[0];
+      option.text = element[0];
       countryLi.appendChild(option);
     });
   });
@@ -67,8 +85,8 @@ async function CountByConti() {
     countryLi.innerHTML = ``;
     countries[1].Europe.forEach(element => {
       let option = document.createElement("option");
-      option.value = element;
-      option.text = element;
+      option.value = element[0];
+      option.text = element[0];
       countryLi.appendChild(option);
     });
   });
@@ -77,8 +95,8 @@ async function CountByConti() {
     countryLi.innerHTML = ``;
     countries[1].Africa.forEach(element => {
       let option = document.createElement("option");
-      option.value = element;
-      option.text = element;
+      option.value = element[0];
+      option.text = element[0];
       countryLi.appendChild(option);
     });
   });
@@ -87,8 +105,8 @@ async function CountByConti() {
     countryLi.innerHTML = ``;
     countries[1].Oceania.forEach(element => {
       let option = document.createElement("option");
-      option.value = element;
-      option.text = element;
+      option.value = element[0];
+      option.text = element[0];
       countryLi.appendChild(option);
     });
   });
@@ -105,4 +123,13 @@ async function CountByConti() {
 }
 
 
-CountByConti()
+
+async function main() {
+  const proxy = `https://api.allorigins.win/raw?url=`;
+  const proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
+  await CountryByConti(proxy);
+  await getCountryCoronaData("AF");
+}
+
+
+main();

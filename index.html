@@ -35,9 +35,29 @@
         <button id="world">World</button>
       </li>
     </ul>
-    <label for="countryLi">Search by Country</label>
-    <select name="countryLi" id="countryLi">
-    </select>
+  </div>
+
+  <br>
+  <div class="container">
+    <div class="search" class=".left">
+      <label for="countryLi">Search by Country:</label>
+      <!-- <br> -->
+      <select name="countryLi" id="countryLi">
+      </select>
+    </div>
+
+    <div class="data" class="right">
+      <table .tableData>
+        <tr>
+          <th>total cases</th>
+          <th>new cases</th>
+          <th>total deaths</th>
+          <th>new deaths</th>
+          <th>total recovered</th>
+          <th>in critical condition</th>
+        </tr>
+      </table>
+    </div>
   </div>
 
   <script src="./scripts/covid.js"></script>
