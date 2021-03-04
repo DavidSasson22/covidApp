@@ -12,7 +12,6 @@ async function allCountriesData(proxy) {
   const countrySrc = `${proxy}https://restcountries.herokuapp.com/api/v1`;
   const getdata = await fetch(countrySrc);
   let allCountries = await getdata.json();
-  console.log(allCountries);
 
   for (country of allCountries) {
     countryByname.push([country.name.common, country.region]);
@@ -30,11 +29,11 @@ async function allCountriesData(proxy) {
 }
 
 
-async function CountByConti () {
+async function CountByConti() {
 
   countries = await allCountriesData(proxy);
-  console.log(countries);
 
+  let countryLi = document.querySelector(`#countryLi`);
   let america = document.querySelector(`#america`);
   let asia = document.querySelector(`#asia`);
   let europe = document.querySelector(`#europe`);
@@ -42,14 +41,67 @@ async function CountByConti () {
   let oceania = document.querySelector(`#oceania`);
   let world = document.querySelector(`#world`);
 
-  let countryQuery = [america, asia, europe, africa, oceania, world];
 
-  america.addEventListener("click", () => console.log(`clicked`));
-  asia.addEventListener("click", () => console.log(`clicked`));
-  europe.addEventListener("click", () => console.log(`clicked`));
-  africa.addEventListener("click", () => console.log(`clicked`));
-  oceania.addEventListener("click", () => console.log(`clicked`));
-  world.addEventListener("click", () => console.log(`clicked`));
+  america.addEventListener("click", () => {
+    countryLi.innerHTML = ``;
+    countries[1].Americas.forEach(element => {
+      let option = document.createElement("option");
+      option.value = element;
+      option.text = element;
+      countryLi.appendChild(option);
+    });
+
+  });
+
+  asia.addEventListener("click", () => {
+    countryLi.innerHTML = ``;
+    countries[1].Asia.forEach(element => {
+      let option = document.createElement("option");
+      option.value = element;
+      option.text = element;
+      countryLi.appendChild(option);
+    });
+  });
+
+  europe.addEventListener("click", () => {
+    countryLi.innerHTML = ``;
+    countries[1].Europe.forEach(element => {
+      let option = document.createElement("option");
+      option.value = element;
+      option.text = element;
+      countryLi.appendChild(option);
+    });
+  });
+
+  africa.addEventListener("click", () => {
+    countryLi.innerHTML = ``;
+    countries[1].Africa.forEach(element => {
+      let option = document.createElement("option");
+      option.value = element;
+      option.text = element;
+      countryLi.appendChild(option);
+    });
+  });
+
+  oceania.addEventListener("click", () => {
+    countryLi.innerHTML = ``;
+    countries[1].Oceania.forEach(element => {
+      let option = document.createElement("option");
+      option.value = element;
+      option.text = element;
+      countryLi.appendChild(option);
+    });
+  });
+
+  world.addEventListener("click", () => {
+    countryLi.innerHTML = ``;
+    countries[0].forEach(element => {
+      let option = document.createElement("option");
+      option.value = element[0];
+      option.text = element[0];
+      countryLi.appendChild(option);
+    });
+  });
 }
 
 
