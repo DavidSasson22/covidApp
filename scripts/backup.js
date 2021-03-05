@@ -191,7 +191,7 @@ async function CountryByConti(countries) {
 
 //Char maker
 function charMaker(countries, dataType, lable) {
- 
+
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -262,25 +262,97 @@ async function main() {
   let selectedContinent;
 
 
-  asia.addEventListener("click", ()=> {
+  asia.addEventListener("click", () => {
     selectedContinent = asia.textContent;
     console.log(selectedContinent);
+    switch (selectedCategory) {
+      case 'Cases':
+        charMaker(asiaNames, asiaCases, `Cases in Asia`);
+        break;
+      case 'Death':
+        charMaker(asiaNames, asiaDeath, `Death in Asia`);
+        break;
+      case 'Recovered':
+        charMaker(asiaNames, asiaRecovered, `Recovered in Asia`);
+        break;
+      case 'Critical':
+        charMaker(asiaNames, asiaCritical, `Critical in Asia`);
+        break;
+    }
   })
-  america.addEventListener("click", ()=> {
+
+  america.addEventListener("click", () => {
     selectedContinent = america.textContent;
     console.log(selectedContinent);
+    switch (selectedCategory) {
+      case 'Cases':
+        charMaker(americasNames, americasCases, `Cases in America`);
+        break;
+      case 'Death':
+        charMaker(americasNames, americasDeath, `Death in America`);
+        break;
+      case 'Recovered':
+        charMaker(americasNames, americasRecovered, `Recovered in America`);
+        break;
+      case 'Critical':
+        charMaker(americasNames, americasCritical, `Critical in America`);
+        break;
+    }
   })
-  europe.addEventListener("click", ()=> {
+
+  europe.addEventListener("click", () => {
     selectedContinent = europe.textContent;
     console.log(selectedContinent);
+    switch (selectedCategory) {
+      case 'Cases':
+        charMaker(europeNames, europeCases, `Cases in Europe`);
+        break;
+      case 'Death':
+        charMaker(europeNames, europeDeath, `Death in Europe`);
+        break;
+      case 'Recovered':
+        charMaker(europeNames, europeRecovered, `Recovered in Europe`);
+        break;
+      case 'Critical':
+        charMaker(europeNames, europeCritical, `Critical in Europe`);
+        break;
+    }
   })
-  africa.addEventListener("click", ()=> {
+  africa.addEventListener("click", () => {
     selectedContinent = africa.textContent;
     console.log(selectedContinent);
+    switch (selectedCategory) {
+      case 'Cases':
+        charMaker(africaNames, africaCases, `Cases in Africa`);
+        break;
+      case 'Death':
+        charMaker(africaNames, africaDeath, `Death in Africa`);
+        break;
+      case 'Recovered':
+        charMaker(africaNames, africaRecovered, `Recovered in Africa`);
+        break;
+      case 'Critical':
+        charMaker(africaNames, africaCritical, `Critical in Africa`);
+        break;
+    }
   })
-  oceania.addEventListener("click", ()=> {
+  oceania.addEventListener("click", () => {
     selectedContinent = oceania.textContent;
     console.log(selectedContinent);
+    switch (selectedCategory) {
+      case 'Cases':
+        charMaker(oceaniaNames, oceaniaCases, `Cases in Oceania`);
+        break;
+      case 'Death':
+        charMaker(oceaniaNames, oceaniaDeath, `Death in Oceania`);
+        break;
+      case 'Recovered':
+        charMaker(oceaniaNames, oceaniaRecovered, `Recovered in Oceania`);
+        break;
+      case 'Critical':
+        charMaker(oceaniaNames, oceaniaCritical, `Critical in Oceania`);
+        break;
+    }
   })
 
 
@@ -292,7 +364,7 @@ async function main() {
         charMaker(asiaNames, asiaCases, `Cases in Asia`);
         break;
       case 'Africa':
-        charMaker(asiaNames, africaCases, `Cases in Africa`);
+        charMaker(africaNames, africaCases, `Cases in Africa`);
         break;
       case 'America':
         charMaker(americasNames, americasCases, `Cases in America`);
@@ -313,7 +385,7 @@ async function main() {
         charMaker(asiaNames, asiaDeath, `Death in Asia`);
         break;
       case 'Africa':
-        charMaker(asiaNames, africaDeath, `Death in Africa`);
+        charMaker(africaNames, africaDeath, `Death in Africa`);
         break;
       case 'America':
         charMaker(americasNames, americasDeath, `Death in America`);
@@ -334,7 +406,7 @@ async function main() {
         charMaker(asiaNames, asiaRecovered, `Recovered in Asia`);
         break;
       case 'Africa':
-        charMaker(asiaNames, africaRecovered, `Recovered in Africa`);
+        charMaker(africaNames, africaRecovered, `Recovered in Africa`);
         break;
       case 'America':
         charMaker(americasNames, americasRecovered, `Recovered in America`);
