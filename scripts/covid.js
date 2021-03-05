@@ -227,8 +227,8 @@ function charMaker(countries, dataType, lable) {
 
 
 async function main() {
-  const proxy = `https://api.allorigins.win/raw?url=`;
-  const proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
+  const proxy2 = `https://api.allorigins.win/raw?url=`;
+  const proxy = `https://api.codetabs.com/v1/proxy/?quest=`;
 
   charMaker([], [], "Please Wait");
 
