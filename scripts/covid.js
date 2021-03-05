@@ -191,14 +191,7 @@ async function CountryByConti(countries) {
 
 //Char maker
 function charMaker(countries, dataType, lable) {
-  // let casesB = document.querySelector(`#cases`);
-  // let deathB = document.querySelector(`#death`);
-  // let recoveredB = document.querySelector(`#recovered`);
-  // let criticalB = document.querySelector(`#critical`);
-
-  // let buttons = [casesB, deathB, recoveredB, criticalB];
-
-
+ 
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
     type: 'bar',
@@ -250,6 +243,127 @@ function charMaker(countries, dataType, lable) {
 async function main() {
   const proxy = `https://api.allorigins.win/raw?url=`;
   const proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
+
+
+  let casesB = document.querySelector(`#cases`);
+  let deathB = document.querySelector(`#death`);
+  let recoveredB = document.querySelector(`#recovered`);
+  let criticalB = document.querySelector(`#critical`);
+
+  let america = document.querySelector(`#america`);
+  // console.log(america.textContent);
+  let asia = document.querySelector(`#asia`);
+  let europe = document.querySelector(`#europe`);
+  let africa = document.querySelector(`#africa`);
+  let oceania = document.querySelector(`#oceania`);
+  let world = document.querySelector(`#world`);
+
+  let selectedCategory;
+  let selectedContinent;
+
+
+  asia.addEventListener("click", ()=> {
+    selectedContinent = asia.textContent;
+    console.log(selectedContinent);
+  })
+  america.addEventListener("click", ()=> {
+    selectedContinent = america.textContent;
+    console.log(selectedContinent);
+  })
+  europe.addEventListener("click", ()=> {
+    selectedContinent = europe.textContent;
+    console.log(selectedContinent);
+  })
+  africa.addEventListener("click", ()=> {
+    selectedContinent = africa.textContent;
+    console.log(selectedContinent);
+  })
+  oceania.addEventListener("click", ()=> {
+    selectedContinent = oceania.textContent;
+    console.log(selectedContinent);
+  })
+
+
+  casesB.addEventListener("click", () => {
+    selectedCategory = casesB;
+    switch (selectedContinent) {
+      case 'Asia':
+        charMaker(asiaNames, asiaCases, `Cases in Asia`);
+        break;
+      case 'Africa':
+        charMaker(asiaNames, africaCases, `Cases in Africa`);
+        break;
+      case 'America':
+        charMaker(americasNames, americasCases, `Cases in America`);
+        break;
+      case 'Europe':
+        charMaker(europeNames, europeCases, `Cases in Europe`);
+        break;
+      case 'Oceania':
+        charMaker(oceaniaNames, oceaniaCases, `Cases in Oceania`);
+        break;
+    }
+  })
+  deathB.addEventListener("click", () => {
+    selectedCategory = deathB;
+    switch (selectedContinent) {
+      case 'Asia':
+        charMaker(asiaNames, asiaDeath, `Death in Asia`);
+        break;
+      case 'Africa':
+        charMaker(asiaNames, africaDeath, `Death in Africa`);
+        break;
+      case 'America':
+        charMaker(americasNames, americasDeath, `Death in America`);
+        break;
+      case 'Europe':
+        charMaker(europeNames, europeDeath, `Death in Europe`);
+        break;
+      case 'Oceania':
+        charMaker(oceaniaNames, oceaniaDeath, `Death in Oceania`);
+        break;
+    }
+  })
+  recoveredB.addEventListener("click", () => {
+    selectedCategory = recoveredB;
+    switch (selectedContinent) {
+      case 'Asia':
+        charMaker(asiaNames, asiaRecovered, `Recovered in Asia`);
+        break;
+      case 'Africa':
+        charMaker(asiaNames, africaRecovered, `Recovered in Africa`);
+        break;
+      case 'America':
+        charMaker(americasNames, americasRecovered, `Recovered in America`);
+        break;
+      case 'Europe':
+        charMaker(europeNames, europeRecovered, `Recovered in Europe`);
+        break;
+      case 'Oceania':
+        charMaker(oceaniaNames, oceaniaRecovered, `Recovered in Oceania`);
+        break;
+    }
+  })
+  criticalB.addEventListener("click", () => {
+    selectedCategory = criticalB;
+    switch (selectedContinent) {
+      case 'Asia':
+        charMaker(asiaNames, asiaCritical, `Critical in Asia`);
+        break;
+      case 'Africa':
+        charMaker(asiaNames, africaCritical, `Critical in Africa`);
+        break;
+      case 'America':
+        charMaker(americasNames, americasCritical, `Critical in America`);
+        break;
+      case 'Europe':
+        charMaker(europeNames, europeCritical, `Critical in Europe`);
+        break;
+      case 'Oceania':
+        charMaker(oceaniaNames, oceaniaCritical, `Critical in Oceania`);
+        break;
+    }
+  })
 
 
   const countriesData = await allCountriesData(proxy);
@@ -306,7 +420,6 @@ async function main() {
     };
     return result
   }
-
 
   const asiaNames = getNames(analizedData[0].countries);
   const asiaCases = getCases(analizedData[0].countries);
