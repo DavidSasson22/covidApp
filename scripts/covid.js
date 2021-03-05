@@ -9,12 +9,12 @@ async function getCountryCoronaData(code) {
   let allData = await getdata.json();
   allData = allData.data;
   // console.log(allData);
-  tr.innerHTML = `<th>total cases:<br>${allData.latest_data.confirmed}</th>
-  <th>new cases:<br>${allData.today.confirmed}</th>
-  <th>total deaths:<br>${allData.latest_data.deaths}</th>
-  <th>new deaths:<br>${allData.today.deaths}</th>
-  <th>total recovered:<br>${allData.latest_data.recovered}</th>
-  <th>in critical condition:<br>${allData.latest_data.critical}</th>`
+  tr.innerHTML = `<th class="light">total cases:<br>${allData.latest_data.confirmed}</th>
+  <th class="dark">new cases:<br>${allData.today.confirmed}</th>
+  <th class="light">total deaths:<br>${allData.latest_data.deaths}</th>
+  <th class="dark">new deaths:<br>${allData.today.deaths}</th>
+  <th class="light">total recovered:<br>${allData.latest_data.recovered}</th>
+  <th class="dark">in critical condition:<br>${allData.latest_data.critical}</th>`
 }
 
 

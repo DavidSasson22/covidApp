@@ -33,50 +33,52 @@
         <button id="critical">Critical</button>
       </li>
     </ul>
-  </div>
-  <div class="byCountry">
-    <ul class="continents">
-      <li class="continent">
-        <button id="africa">Africa</button>
-      </li>
-      <li class="continent">
-        <button id="america">America</button>
-      </li>
-      <li class="continent">
-        <button id="asia">Asia</button>
-      </li>
-      <li class="continent">
-        <button id="europe">Europe</button>
-      </li>
-      <li class="continent">
-        <button id="oceania">Oceania</button>
-      </li>
-      <li class="continent">
-        <button id="world">World</button>
-      </li>
-    </ul>
-  </div>
-
-  <br>
-  <div class="container">
-    <div class="search" class=".left">
-      <label for="countryLi">Search by Country:</label>
-      <select name="countryLi" id="countryLi">
-      </select>
+    <div class="byCountry">
+      <ul class="continents">
+        <li class="continent">
+          <button id="africa">Africa</button>
+        </li>
+        <li class="continent">
+          <button id="america">America</button>
+        </li>
+        <li class="continent">
+          <button id="asia">Asia</button>
+        </li>
+        <li class="continent">
+          <button id="europe">Europe</button>
+        </li>
+        <li class="continent">
+          <button id="oceania">Oceania</button>
+        </li>
+        <li class="continent">
+          <button id="world">World</button>
+        </li>
+      </ul>
     </div>
 
-    <div class="data" class="right">
-      <table .tableData>
-        <tr class="tr">
-          <th>total cases: <br></th>
-          <th>new cases: <br></th>
-          <th>total deaths: <br></th>
-          <th>new deaths: <br></th>
-          <th>total recovered: <br></th>
-          <th>in critical condition: <br></th>
-      </table>
+    <br>
+    <div class="container">
+      <div class="search" class=".left">
+        <label for="countryLi">Search by Country:</label>
+        <select name="countryLi" id="countryLi">
+        </select>
+      </div>
+
+      <div class="data" class="right">
+        <table class="tableData">
+          <tr class="tr">
+            <th class="light">total cases: <br></th>
+            <th class="dark">new cases: <br></th>
+            <th class="light">total deaths: <br></th>
+            <th class="dark">new deaths: <br></th>
+            <th class="light">total recovered: <br></th>
+            <th class="dark">in critical condition: <br></th>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
+
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="./scripts/covid.js"></script>

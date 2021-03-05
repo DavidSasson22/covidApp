@@ -10,6 +10,9 @@ li {
 .search {
   display: inline-block;
   width: 30vw;
+  font-size: 18px;
+  color: #6B605F;
+  font-weight: 700;
 }
 
 .byCountry {
@@ -24,10 +27,13 @@ li {
 .tableData {
   border: 1px solid black;
   display: flex;
+  width: 50vw;
+  float: right;
 }
 
 th {
   padding: 16px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* .graph {
@@ -42,6 +48,19 @@ th {
 
 #countryLi {
   width: 200px;
+}
+
+.dark {
+  background-color: #A1EBC3;
+}
+
+.light {
+  background-color:#87A4D4;
+}
+
+.dataType {
+  background-color: #EB948A;
+  padding: 16px;
 }
 
 
@@ -63,7 +82,10 @@ th {
   height: 80%;
 }
 
-
+.allBut {
+  background-color: aqua;
+  display: inline-block;
+}
 
 @keyframes virus {
   0% {
