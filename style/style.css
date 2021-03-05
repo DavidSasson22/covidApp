@@ -30,6 +30,10 @@ th {
   padding: 16px;
 }
 
+/* .graph {
+  height: 10vh;
+} */
+
 .container {
   display: flex;
   align-items: baseline;
@@ -38,4 +42,34 @@ th {
 
 #countryLi {
   width: 200px;
+}
+
+
+.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 80%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+  padding: 2vh 1vw;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+.spinner {
+  border-radius: 20px;
+  animation: virus 3s ease-in-out infinite alternate;
+  height: 80%;
+}
+
+
+
+@keyframes virus {
+  0% {
+    transform: translateX(-10vw) rotate(0);
+  }
+  100% {
+    transform: translateX(90vw) rotate(180deg);
+  }
 }

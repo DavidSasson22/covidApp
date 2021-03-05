@@ -13,7 +13,10 @@
 <body>
   <header></header>
   <div class="graph">
-    <canvas id="myChart"  width="400" height="100"></canvas>
+    <canvas id="myChart" width="400" height="100"></canvas>
+    <div class="spinner-container">
+      <img class="spinner" src="https://image.flaticon.com/icons/svg/2904/2904131.svg" alt="icon" />
+    </div>
   </div>
   <div class="dataType">
     <ul class="by type">
@@ -71,11 +74,10 @@
           <th>new deaths: <br></th>
           <th>total recovered: <br></th>
           <th>in critical condition: <br></th>
-        </tr>
       </table>
     </div>
   </div>
-  
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="./scripts/covid.js"></script>
   <!-- <script src="./scripts/backup.js"></script> -->

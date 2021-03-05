@@ -230,6 +230,9 @@ async function main() {
   const proxy = `https://api.allorigins.win/raw?url=`;
   const proxy2 = `https://api.codetabs.com/v1/proxy/?quest=`;
 
+  charMaker([], [], "Please Wait");
+
+  let spinner =document.querySelector(`.spinner-container`);
 
   let casesB = document.querySelector(`#cases`);
   let deathB = document.querySelector(`#death`);
@@ -514,9 +517,11 @@ async function main() {
   const americasCritical = getCritical(analizedData[4].countries);
 
 
+  spinner.style.display = "none";
 
 
-  charMaker(asiaNames, asiaDeath, `Death in Asia`);
+
+  charMaker([], [], `Choose Continent and Category`);
 
 }
 
