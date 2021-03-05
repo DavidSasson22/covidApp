@@ -285,7 +285,8 @@ async function main() {
 
 
   casesB.addEventListener("click", () => {
-    selectedCategory = casesB;
+    selectedCategory = casesB.textContent;
+    console.log(selectedCategory);
     switch (selectedContinent) {
       case 'Asia':
         charMaker(asiaNames, asiaCases, `Cases in Asia`);
@@ -305,7 +306,8 @@ async function main() {
     }
   })
   deathB.addEventListener("click", () => {
-    selectedCategory = deathB;
+    selectedCategory = deathB.textContent;
+    console.log(selectedCategory);
     switch (selectedContinent) {
       case 'Asia':
         charMaker(asiaNames, asiaDeath, `Death in Asia`);
@@ -325,7 +327,8 @@ async function main() {
     }
   })
   recoveredB.addEventListener("click", () => {
-    selectedCategory = recoveredB;
+    selectedCategory = recoveredB.textContent;
+    console.log(selectedCategory);
     switch (selectedContinent) {
       case 'Asia':
         charMaker(asiaNames, asiaRecovered, `Recovered in Asia`);
@@ -345,7 +348,8 @@ async function main() {
     }
   })
   criticalB.addEventListener("click", () => {
-    selectedCategory = criticalB;
+    selectedCategory = criticalB.textContent;
+    console.log(selectedCategory);
     switch (selectedContinent) {
       case 'Asia':
         charMaker(asiaNames, asiaCritical, `Critical in Asia`);
