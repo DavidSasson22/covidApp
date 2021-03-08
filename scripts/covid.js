@@ -191,6 +191,16 @@ async function CountryByConti(countries) {
 
 //Char maker
 function charMaker(countries, dataType, lable) {
+  let divCanvas = document.querySelector("#divcanvas");
+  divCanvas.innerHTML = ``;
+
+  let chart = document.createElement("canvas");
+  chart.setAttribute("id", `myChart`);
+  chart.width = 600;
+  chart.height = 200;
+
+  divCanvas.appendChild(chart);
+
 
   var ctx = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(ctx, {
@@ -232,7 +242,7 @@ async function main() {
 
   charMaker([], [], "Please Wait");
 
-  let spinner =document.querySelector(`.spinner-container`);
+  let spinner = document.querySelector(`.spinner-container`);
 
   let casesB = document.querySelector(`#cases`);
   let deathB = document.querySelector(`#death`);
