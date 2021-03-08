@@ -22,23 +22,38 @@ li {
 .data {
   float: right;
   width: 66vw;
+  height: 60px;
 }
 
 .tableData {
-  border: 1px solid black;
+  border: 2px solid #6B605F;
   display: flex;
   width: 50vw;
   float: right;
+  background-color: white;
 }
 
 th {
   padding: 16px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  height: 60px;
 }
 
-/* .graph {
-  height: 10vh;
-} */
+.graph {
+  height: 55vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+canvas {
+  width: 0px;
+}
+
+#divcanvas {
+  width: 1000px;
+  height: 100px;
+}
 
 .container {
   display: flex;
@@ -61,6 +76,7 @@ th {
 .dataType {
   background-color: #EB948A;
   padding: 16px;
+  height: 38vh;
 }
 
 
